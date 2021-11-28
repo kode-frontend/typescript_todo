@@ -4,10 +4,11 @@ import './App.css'
 import { AppProvider } from './store/store'
 import { Header } from './components/header'
 import { MainSection } from './components/main-section'
-import { Footer } from './components/footer.tsx'
+import { Footer } from './components/footer'
+import { Filters } from './types'
 
 function App() {
-  const [visibilityFilter, setVisibilityFilter] = useState('All')
+  const [visibilityFilter, setVisibilityFilter] = useState<Filters>('All')
 
   return (
     <div className="App">
