@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+
+li {
+  list-style: none;
+}
+
+.todo-item-view-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filters-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filters-list button {
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  cursor: pointer;
+}
+
+.filters-list button.active {
+  border-color: aqua;
+}
