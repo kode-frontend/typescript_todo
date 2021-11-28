@@ -2,8 +2,13 @@ import { useContext, useMemo } from "react"
 import { Context } from "../store/store"
 
 import { TodoList } from "./todo-list"
+import { Filters } from '../types'
 
-export const MainSection = ({ visibilityFilter }) => {
+type Props = {
+  visibilityFilter: Filters
+}
+
+export const MainSection: React.FC<Props> = ({ visibilityFilter }) => {
   const { state } = useContext(Context)
 
   const mappedTodos = useMemo(() => {

@@ -1,25 +1,32 @@
-import { useState } from "react"
+import { useState, ChangeEvent, KeyboardEvent, FocusEvent } from "react"
 
-export const TodoTextInput = ({
+type Props = {
+  isNewItem: boolean
+  text?: string
+  isEditing?: boolean,
+  onSave: (text: string) => void
+}
+
+export const TodoTextInput: React.FC<Props> = ({
   text,
-  isEditing = true, // влияет на отображение стилей
+  isEditing = true,
   isNewItem,
   onSave,
 }) => {
   const [inputText, setInpuText] = useState(text || '')
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setInpuText(e.target.value)
   }
 
-  const onKeyDownHandler = (e) => {
+  const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.keyCode === 13) {
       onSave(inputText)
       setInpuText('')
     }
   }
 
-  const onBlurHandler = (e) => {
+  const onBlurHandler = (e: FocusEvent<HTMLInputElement>): void => {
     if (!isNewItem) {
       console.log('blured')
       onSave(e.target.value)

@@ -6,7 +6,7 @@ import { TodoTextInput } from "./todo-text-input"
 export const Header = () => {
   const { dispatch } = useContext(Context)
 
-  const onSave = (text) => {
+  const onSave = (text: string) => {
     dispatch({ type: 'ADD_TODO', payload: { text }})
   }
 

@@ -1,8 +1,14 @@
-import { createContext, useReducer } from "react"
+import { createContext, useReducer, Dispatch } from "react"
+import { Task } from '../types'
 
 import { todoReducer } from './reducer'
+import type { Action } from './reducer'
 
-const initialState = {
+type State = {
+  todos: Task[]
+}
+
+const initialState: State = {
   todos: [
     {
       id: 10,
@@ -22,16 +28,19 @@ const initialState = {
   ]
 }
 
-const mainReducer = ({ todos }, action) => ({
-  todos: todoReducer(todos, action)
-})
-
-export const Context = createContext({
+export const Context = createContext<{
+  state: State,
+  dispatch: Dispatch<Action>
+}>({
   state: initialState,
   dispatch: () => null
 })
 
-export const AppProvider = ({ children }) => {
+const mainReducer = ({ todos }: State, action: Action): State => ({
+  todos: todoReducer(todos, action)
+})
+
+export const AppProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState)
 
   return (

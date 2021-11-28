@@ -3,19 +3,25 @@ import { useState, useContext } from "react"
 import { Context } from "../store/store"
 import { TodoTextInput } from "./todo-text-input"
 import { TodoItemView } from "./todo-item-view"
+import { Task } from '../types'
 
-export const TodoItem = ({ task }) => {
+type Props = { 
+  task: Task
+}
+
+export const TodoItem: React.FC<Props> = ({ task }) => {
   const { dispatch } = useContext(Context)
   const [isEditing, setIsEditing] =  useState(false)
 
-  const onSave = (text) => {
-    dispatch({type: 'EDIT_TODO', payload: { id: task.id, text }})
+
+  const onSave = (text: string) => {
+    dispatch({ type: 'EDIT_TODO', payload: { id: task.id, text }} )
     setIsEditing(false)
   }
-  const onDelete = (id) => {
+  const onDelete = (id: number) => {
     dispatch({ type: 'DELETE_TODO', payload: { id } })
   }
-  const toggleComplete = (id) => {
+  const toggleComplete = (id: number) => {
     dispatch({ type: 'TOGGLE_COMPLETED', payload: { id } })
   }
   const onDoubleClick = () => {

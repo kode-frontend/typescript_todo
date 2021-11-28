@@ -2,17 +2,23 @@ import { useContext, useMemo } from 'react'
 
 import { Context } from '../store/store'
 import { FilterButton } from './filter-button'
+import { Filters } from '../types'
 
-const FILTER_TITLES = ["All", "Active", "Completed"];
+const FILTER_TITLES = ["All", "Active", "Completed"] as Filters[]
 
-export const Footer = ({ visibilityFilter, setVisibilityFilter }) => {
+type Props = {
+  visibilityFilter: Filters,
+  setVisibilityFilter: (filter: Filters) => void
+}
+
+export const Footer: React.FC<Props> = ({ visibilityFilter, setVisibilityFilter }) => {
   const { state } = useContext(Context)
 
   const todoTaskCount = useMemo(() => {
     return state.todos.filter((task) => !task.isCompleted).length
   }, [state])
 
-  const onFilterChange = (filter) => {
+  const onFilterChange = (filter: Filters) => {
     console.log(filter)
     setVisibilityFilter(filter)
   }

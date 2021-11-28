@@ -4,7 +4,7 @@ import './App.css'
 import { AppProvider } from './store/store'
 import { Header } from './components/header'
 import { MainSection } from './components/main-section'
-import { Footer } from './components/footer'
+import { Footer } from './components/footer.tsx'
 
 function App() {
   const [visibilityFilter, setVisibilityFilter] = useState('All')
