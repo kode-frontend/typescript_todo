@@ -11,22 +11,6 @@
   pointer-events: none;
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-} */
-
-
 .text-input {
   font-size: 14px;
   line-height: 18px;
@@ -106,6 +90,10 @@ li {
   position: absolute;
   top: 6px;
   left: 6px;
+}
+
+.todo-item-view-wrapper input:checked + label {
+  text-decoration: line-through;
 }
 
 .todo-item-view-wrapper button {
