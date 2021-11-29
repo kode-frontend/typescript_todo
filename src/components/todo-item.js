@@ -23,7 +23,7 @@ export const TodoItem = ({ task }) => {
   }
 
   return (
-    <li>
+    <li className={'todo-item-wrapper'}>
       {isEditing ? (
         <TodoTextInput isNewItem={false} text={task.text} onSave={onSave} />
       ): (

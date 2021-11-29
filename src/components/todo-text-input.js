@@ -13,7 +13,7 @@ export const TodoTextInput = ({
   }
 
   const onKeyDownHandler = (e) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && Boolean(inputText)) {
       onSave(inputText)
       setInpuText('')
     }
@@ -29,6 +29,7 @@ export const TodoTextInput = ({
   return (
     <div>
       <input
+        className={'text-input'}
         type='text'
         autoFocus
         placeholder='Что нужно сделать?'
