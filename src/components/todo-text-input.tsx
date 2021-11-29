@@ -19,8 +19,8 @@ export const TodoTextInput: React.FC<Props> = ({
     setInpuText(e.target.value)
   }
 
-  const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.keyCode === 13) {
+  const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13 && Boolean(inputText)) {
       onSave(inputText)
       setInpuText('')
     }
@@ -36,6 +36,7 @@ export const TodoTextInput: React.FC<Props> = ({
   return (
     <div>
       <input
+        className={'text-input'}
         type='text'
         autoFocus
         placeholder='Что нужно сделать?'
