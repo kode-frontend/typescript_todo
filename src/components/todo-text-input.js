@@ -1,21 +1,18 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-export const TodoTextInput = ({
-  text,
-  isEditing = true, // влияет на отображение стилей
-  isNewItem,
-  onSave,
-}) => {
-  const [inputText, setInpuText] = useState(text || '')
+const keyboardEnterKey = 'Enter'
+
+export const TodoTextInput = ({ text, isNewItem, onSave }) => {
+  const [inputText, setInputText] = useState(text || '')
 
   const onChangeHandler = (e) => {
-    setInpuText(e.target.value)
+    setInputText(e.target.value)
   }
 
   const onKeyDownHandler = (e) => {
-    if (e.keyCode === 13 && Boolean(inputText)) {
+    if (e.key === keyboardEnterKey && Boolean(inputText)) {
       onSave(inputText)
-      setInpuText('')
+      setInputText('')
     }
   }
 
@@ -29,10 +26,10 @@ export const TodoTextInput = ({
   return (
     <div>
       <input
-        className={'text-input'}
-        type='text'
+        className="text-input"
+        type="text"
         autoFocus
-        placeholder='Что нужно сделать?'
+        placeholder="Что нужно сделать?"
         value={inputText}
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
