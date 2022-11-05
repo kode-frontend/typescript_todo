@@ -14,10 +14,13 @@ function App() {
       <AppProvider>
         <Header />
         <MainSection visibilityFilter={visibilityFilter} />
-        <Footer visibilityFilter={visibilityFilter} setVisibilityFilter={setVisibilityFilter} />
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterChange={setVisibilityFilter}
+        />
       </AppProvider>
     </div>
   )
 }
 
-export default App;
+export default App
