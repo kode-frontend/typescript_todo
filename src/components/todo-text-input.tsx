@@ -1,22 +1,32 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 const keyboardEnterKey = 'Enter'
 
-export const TodoTextInput = ({ text, isNewItem, onSave }) => {
+type TodoTextInputProps = {
+  text?: string
+  isNewItem: boolean
+  onSave: (text: string) => void
+}
+
+export const TodoTextInput = ({
+  text,
+  isNewItem,
+  onSave,
+}: TodoTextInputProps) => {
   const [inputText, setInputText] = useState(text || '')
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value)
   }
 
-  const onKeyDownHandler = (e) => {
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === keyboardEnterKey && Boolean(inputText)) {
       onSave(inputText)
       setInputText('')
     }
   }
 
-  const onBlurHandler = (e) => {
+  const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     if (!isNewItem) {
       console.log('blured')
       onSave(e.target.value)

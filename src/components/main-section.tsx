@@ -1,9 +1,14 @@
-import { useContext, useMemo } from "react"
-import { Context } from "../store/store"
+import { useContext, useMemo } from 'react'
+import { Context } from '../store/store'
+import { Filter } from '../types'
 
-import { TodoList } from "./todo-list"
+import { TodoList } from './todo-list'
 
-export const MainSection = ({ visibilityFilter }) => {
+type MainSectionProps = {
+  visibilityFilter: Filter
+}
+
+export const MainSection = ({ visibilityFilter }: MainSectionProps) => {
   const { state } = useContext(Context)
 
   const mappedTodos = useMemo(() => {
@@ -17,9 +22,5 @@ export const MainSection = ({ visibilityFilter }) => {
     }
   }, [state, visibilityFilter])
 
-  return (
-    <TodoList
-      data={mappedTodos}
-    />
-  )
+  return <TodoList data={mappedTodos} />
 }

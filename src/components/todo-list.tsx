@@ -1,6 +1,11 @@
+import { Todo } from '../types'
 import { TodoItem } from './todo-item'
 
-export const TodoList = ({ data }) => {
+type TodoListProps = {
+  data: Todo[]
+}
+
+export const TodoList = ({ data }: TodoListProps) => {
   return (
     <ul className="todo-list">
       {data.map((item) => (
